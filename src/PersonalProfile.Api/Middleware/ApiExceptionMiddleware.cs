@@ -34,13 +34,10 @@ public sealed class ApiExceptionMiddleware(RequestDelegate next, ILogger<ApiExce
             return;
         }
 
+        var problem = ApiProblemDetailsFactory.Create(context, statusCode, title, detail);
+
         context.Response.StatusCode = statusCode;
-        await context.Response.WriteAsJsonAsync(new
-        {
-            type = "about:blank",
-            title,
-            status = statusCode,
-            detail
-        });
+        context.Response.ContentType = "application/problem+json";
+        await context.Response.WriteAsJsonAsync(problem);
     }
 }

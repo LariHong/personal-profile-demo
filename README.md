@@ -96,15 +96,29 @@ The default connection string uses LocalDB:
 
 Override it with user secrets, environment variables, or `appsettings.Development.json` when using another SQL Server instance.
 
-## API
+## API contract
 
 Base URL during local development: `http://localhost:5188`
 
-- `GET /api/profiles?keyword=...`
-- `GET /api/profiles/{id}`
-- `POST /api/profiles`
-- `PUT /api/profiles/{id}`
-- `DELETE /api/profiles/{id}`
+目前 API 使用 `v1` 路徑，讓前後端通訊合約可以在後續版本演進時保留相容性。
+
+- `GET /api/v1/profiles?keyword=...`
+- `GET /api/v1/profiles/{id}`
+- `POST /api/v1/profiles`
+- `PUT /api/v1/profiles/{id}`
+- `DELETE /api/v1/profiles/{id}`
+
+HTTP 狀態碼約定：
+
+- `200 OK`：查詢或更新成功。
+- `201 Created`：新增成功，並回傳新資料。
+- `204 No Content`：刪除成功。
+- `400 Bad Request`：欄位驗證失敗，回傳 `ValidationProblemDetails`。
+- `404 Not Found`：指定資料不存在。
+- `409 Conflict`：身分證字號重複。
+- `500 Internal Server Error`：資料庫或非預期伺服器錯誤。
+
+錯誤回應統一使用 `application/problem+json`，內容包含 `type`、`title`、`status`、`detail`、`instance` 與 `traceId`。前端 API client 只依照這個 contract 解析錯誤訊息，避免畫面層直接猜測後端錯誤格式。
 
 Required fields:
 

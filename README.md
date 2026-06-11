@@ -120,6 +120,14 @@ HTTP 狀態碼約定：
 
 錯誤回應統一使用 `application/problem+json`，內容包含 `type`、`title`、`status`、`detail`、`instance` 與 `traceId`。前端 API client 只依照這個 contract 解析錯誤訊息，避免畫面層直接猜測後端錯誤格式。
 
+## 後端橫切關注點
+
+新增、編輯、刪除 API 使用 `AuditActionAttribute` 標記需要稽核的動作，並由 `AuditActionFilter` 透過 DI 取得 `IAuditLogger` 與 `ISystemClock`。這個設計展示 Attribute、DI 與 filter 型的 AOP 思路：
+
+- Controller 只宣告業務動作，例如 `profiles.create`、`profiles.update`、`profiles.delete`。
+- Filter 統一記錄 HTTP method、path、status code、duration 與 traceId。
+- 目前稽核輸出寫入 structured logging，不建立資料庫 audit table，避免 demo scope 過度膨脹。
+
 Required fields:
 
 - `nationalId`: Taiwan national ID

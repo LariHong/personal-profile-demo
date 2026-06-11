@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PersonalProfile.Api.Audit;
 using PersonalProfile.Api.Dtos;
 using PersonalProfile.Api.Middleware;
 using PersonalProfile.Api.Services;
@@ -25,6 +26,7 @@ public sealed class ProfilesController(IPersonalProfileService profiles) : Contr
     }
 
     [HttpPost]
+    [AuditAction("profiles.create")]
     public async Task<ActionResult<PersonalProfileDto>> Create(
         [FromBody] UpsertPersonalProfileRequest request,
         CancellationToken cancellationToken)
@@ -34,6 +36,7 @@ public sealed class ProfilesController(IPersonalProfileService profiles) : Contr
     }
 
     [HttpPut("{id:int}")]
+    [AuditAction("profiles.update")]
     public async Task<ActionResult<PersonalProfileDto>> Update(
         int id,
         [FromBody] UpsertPersonalProfileRequest request,
@@ -44,6 +47,7 @@ public sealed class ProfilesController(IPersonalProfileService profiles) : Contr
     }
 
     [HttpDelete("{id:int}")]
+    [AuditAction("profiles.delete")]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
         var deleted = await profiles.DeleteAsync(id, cancellationToken);

@@ -1,0 +1,27 @@
+# IDE and local user state
+.vs/
+.vscode/
+*.user
+*.suo
+
+# .NET build output
+bin/
+obj/
+TestResults/
+
+# Frontend dependencies and build output
+client/node_modules/
+client/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local environment overrides
+*.local
+.env
+.env.*
+!*.env.example
+
+# OS files
+Thumbs.db
+.DS_Store

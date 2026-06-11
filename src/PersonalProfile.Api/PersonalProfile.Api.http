@@ -1,0 +1,63 @@
+@PersonalProfile.Api_HostAddress = http://localhost:5188
+
+GET {{PersonalProfile.Api_HostAddress}}/api/profiles
+Accept: application/json
+
+###
+
+GET {{PersonalProfile.Api_HostAddress}}/api/profiles?keyword=台北
+Accept: application/json
+
+###
+
+POST {{PersonalProfile.Api_HostAddress}}/api/profiles
+Content-Type: application/json
+
+{
+  "nationalId": "A123456789",
+  "name": "王小明",
+  "gender": "Male",
+  "birthday": "1995-01-20",
+  "city": "台北市",
+  "district": "中正區",
+  "address": "測試路 1 號",
+  "phone": "0912345678"
+}
+
+###
+
+POST {{PersonalProfile.Api_HostAddress}}/api/profiles
+Content-Type: application/json
+
+{
+  "nationalId": "A123456788",
+  "name": "驗證失敗範例",
+  "gender": "Male",
+  "birthday": "1995-01-20",
+  "city": "台北市",
+  "district": "中正區",
+  "address": "測試路 1 號",
+  "phone": "0912345678"
+}
+
+###
+
+PUT {{PersonalProfile.Api_HostAddress}}/api/profiles/1
+Content-Type: application/json
+
+{
+  "nationalId": "A123456789",
+  "name": "王小明 Updated",
+  "gender": "Male",
+  "birthday": "1995-01-20",
+  "city": "新北市",
+  "district": "板橋區",
+  "address": "更新路 2 號",
+  "phone": "0987654321"
+}
+
+###
+
+DELETE {{PersonalProfile.Api_HostAddress}}/api/profiles/1
+
+###

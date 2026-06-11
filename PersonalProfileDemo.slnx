@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/PersonalProfile.Api/PersonalProfile.Api.csproj" />
+  <Project Path="tests/PersonalProfile.ValidationCheck/PersonalProfile.ValidationCheck.csproj" />
+</Solution>

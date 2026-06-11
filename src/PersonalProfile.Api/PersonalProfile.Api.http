@@ -1,16 +1,16 @@
 @PersonalProfile.Api_HostAddress = http://localhost:5188
 
-GET {{PersonalProfile.Api_HostAddress}}/api/profiles
+GET {{PersonalProfile.Api_HostAddress}}/api/v1/profiles
 Accept: application/json
 
 ###
 
-GET {{PersonalProfile.Api_HostAddress}}/api/profiles?keyword=台北
+GET {{PersonalProfile.Api_HostAddress}}/api/v1/profiles?keyword=台北
 Accept: application/json
 
 ###
 
-POST {{PersonalProfile.Api_HostAddress}}/api/profiles
+POST {{PersonalProfile.Api_HostAddress}}/api/v1/profiles
 Content-Type: application/json
 
 {
@@ -26,7 +26,7 @@ Content-Type: application/json
 
 ###
 
-POST {{PersonalProfile.Api_HostAddress}}/api/profiles
+POST {{PersonalProfile.Api_HostAddress}}/api/v1/profiles
 Content-Type: application/json
 
 {
@@ -42,7 +42,7 @@ Content-Type: application/json
 
 ###
 
-PUT {{PersonalProfile.Api_HostAddress}}/api/profiles/1
+PUT {{PersonalProfile.Api_HostAddress}}/api/v1/profiles/1
 Content-Type: application/json
 
 {
@@ -58,6 +58,11 @@ Content-Type: application/json
 
 ###
 
-DELETE {{PersonalProfile.Api_HostAddress}}/api/profiles/1
+GET {{PersonalProfile.Api_HostAddress}}/api/v1/profiles/999999
+Accept: application/problem+json
+
+###
+
+DELETE {{PersonalProfile.Api_HostAddress}}/api/v1/profiles/1
 
 ###

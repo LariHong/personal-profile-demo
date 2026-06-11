@@ -1,4 +1,4 @@
-const PROFILES_ENDPOINT = '/api/profiles';
+const PROFILES_ENDPOINT = '/api/v1/profiles';
 
 export async function searchProfiles(keyword) {
   const url = new URL(PROFILES_ENDPOINT, window.location.origin);

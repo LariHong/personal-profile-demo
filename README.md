@@ -40,6 +40,16 @@ tests/               Lightweight validation check project
 docs/slices/         Scope and slice planning notes
 ```
 
+## 前端模組
+
+Vue3 前端將頁面責任拆開，讓面試官能看出 API 呼叫、狀態管理與畫面元件的邊界：
+
+- `client/src/api/profiles.js`：個人資料 API 呼叫與 HTTP 錯誤解析。
+- `client/src/composables/useProfiles.js`：列表、查詢、表單狀態與 CRUD 流程。
+- `client/src/components/ProfileForm.vue`：新增與編輯表單。
+- `client/src/components/ProfileTable.vue`：資料列表與列操作。
+- `client/src/constants/genders.js`：共用性別選項與顯示文字。
+
 ## Run
 
 Run the API:
